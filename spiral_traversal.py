@@ -1,9 +1,34 @@
-# Cyclically rotate an array by one 
+matrix = [
+            [ 1 , 2 , 3 , 4 ] ,
+            [ 5 , 6 , 7 , 8 ] ,
+            [ 9 , 10 , 11 , 12 ] ,
+            [ 13 , 14 , 15 , 16 ]
+    ]
+    
+index1 = 0
+while True :
+    if index1 == 0 :
+        for index2 in range ( 0 , len ( matrix [ index1 ] ) ) :
+            print ( matrix [ index1 ] [ index2 ] )
+        matrix .pop ( index1 )
+        while index1 != len ( matrix ) - 1 :
+            temp = len ( matrix [ index1 ] ) -1
+            print ( matrix [ index1 ] [ temp ] )
+            matrix [ index1 ] .pop ( temp )
+            index1 += 1
 
-# Given an array, rotate the array by one position in clock-wise direction.
-
-array = [ 9, 8, 7, 6, 4, 2, 1, 3 ]
-temp =  array [ -1 ] 
-array.pop ( len(array)-1 )
-array.insert ( 0 , temp )
-print ( array )
+        
+    if index1 == len ( matrix ) - 1 :
+        index2 = len ( matrix [ index1 ] ) - 1
+        while matrix [ index1 ] :
+            print ( matrix [ index1 ] [ index2 ] )
+            matrix [ index1 ] .pop ( index2 )
+            index2 -= 1
+        matrix .pop ( index1 )
+        index1 -= 1
+        while matrix :
+            print ( matrix [ index1 ] [ 0 ] )
+            matrix [ index1 ] .pop ( 0 )
+            index1 -= 1
+        index1 = 0
+    if len ( matrix ) == 0 : break
